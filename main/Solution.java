@@ -11,7 +11,7 @@ public static void main(String[] args) {
 	NTree tree = new NTree();
 	TreeNode root = new TreeNode("start", null);
 	tree.setRoot(root);
-	String input = "dir1\n dir11\n  dir111\n   mohan.jpeg\ndir2\ndir3\n dir31\n  naveen.jpeg\n guru.jpeg\ndir4";
+	String input = "dir1\n dir11\n dir12\n  dir111\n   mohan.jpeg\ndir2\ndir3\n dir31\n  naveen.jpeg\n guru.jpeg\ndir4";
 	System.out.println(input);
 	HashMap<Integer, String> levelTrack = new HashMap<>();
 	String[] dirs = input.split("\n");
