@@ -26,8 +26,6 @@ public class HeapSort {
         	a[i] = a[max];
         	a[max] = temp;
         	heapMaxify(a, max);
-         // System.out.println();
-         //   System.out.println(" root " + a[i] +" left " + a[left] + " right " + a[right]);
         }
         
 	}
