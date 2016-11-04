@@ -9,26 +9,52 @@ import java.util.stream.IntStream;
 
 class Solution2 {
 static int maxLength(int[] a, int k) {
-	int maxPhrase = 0;
-	a = Arrays.stream(a).filter(x -> x <= k).toArray();
-	int  i=1;
-	while(i <= a.length){
-		for(int j=0;j <= a.length - i; j ++){
-			int sum =0;
-			int arraySubSet[] =  Arrays.copyOfRange(a, j, j +i);
-			int length = arraySubSet.length;
-			if(maxPhrase < length){
-					sum = Arrays.stream(arraySubSet).sum();
-					if(sum <= k){
-					maxPhrase = length;
-					break;
-				}
+	int maxCount = 0,count =0,sum = 0,head = 0;
+	for(int i =0; i < a.length; i ++){
+		sum += a[i];
+		count += 1;
+		if(sum > k){
+			while(sum > k){
+				sum = sum - a[head];
+				head += 1;
+				count = count -1;
 			}
 		}
-		i = i - 1;
+		if(count > maxCount){
+			maxCount = count;	
+		}
 	}
-	return maxPhrase;
+	return maxCount;
 }
+
+
+public static int maxSequenceSum(int[] arr,int k)
+{        
+    int maxSoFar = arr[0], maxEndingHere = arr[0],count=1,maxCount=0,_i;
+
+    for (int i = 1; i < arr.length; i++)
+    {
+    	_i=i;
+        /* calculate maxEndingHere */
+    	maxEndingHere += arr[i];
+    	
+        if (maxEndingHere >k){
+            maxEndingHere = arr[i];
+            count=0;
+        }
+      
+        if (maxEndingHere <= k)
+        	count++;
+        
+        if(count > maxCount)
+        	{
+        	maxCount = count;
+        	i=_i;
+        	}
+    }
+    return count;
+}  
+
 	public static void main(String[] args) throws IOException{
         Scanner in = new Scanner(System.in);
 //        final String fileName = System.getenv("OUTPUT_PATH");
@@ -56,7 +82,7 @@ static int maxLength(int[] a, int k) {
 
 }
 
-
+//  1 2 1 3 1 --> 4
 /*
 11
 1
@@ -187,5 +213,27 @@ int maxPhrase = 0;
 	}
 	
 	return maxCount;
+	
+	
+	
+	int maxPhrase = 0;
+	int  i=1;
+	while(i <= a.length){
+		for(int j=0;j <= a.length - i; j ++){
+			int sum =0;
+			int arraySubSet[] =  Arrays.copyOfRange(a, j, j +i);
+			int length = arraySubSet.length;
+			if(maxPhrase < length){
+					sum = Arrays.stream(arraySubSet).sum();
+					if(sum <= k){
+					maxPhrase = length;
+					break;
+				}
+			}
+		}
+		i = i + 1;
+	}
+	int res = maxSequenceSum(a,k);
+	return maxPhrase;
 */
 
