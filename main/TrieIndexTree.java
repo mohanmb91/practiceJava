@@ -62,7 +62,7 @@ public class TrieIndexTree {
       int t;
       InputStreamReader is = new InputStreamReader(System.in);
       BufferedReader br = new BufferedReader(is);
-      t = Integer.parseInt(br.readLine());
+      t = Integer.parseInt(br.readLine());      
       String input;
       while(t-- > 0)
           {
